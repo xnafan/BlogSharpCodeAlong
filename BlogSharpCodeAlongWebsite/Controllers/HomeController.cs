@@ -43,14 +43,17 @@ namespace BlogSharpCodeAlongWebsite.Controllers
         }
         public ActionResult Edit(int id)
         {
-            return View();
+            return View(blogPostList.First(blogPost => blogPost.Id == id));
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(int id, BlogPost blogPost)
         {
             try
             {
+                var itemToEdit = blogPostList.First(post => post.Id == id);
+                itemToEdit.Title = blogPost.Title;
+                itemToEdit.Content = blogPost.Content;
                 return RedirectToAction(nameof(Index));
             }
             catch
