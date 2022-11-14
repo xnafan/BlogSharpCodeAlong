@@ -7,7 +7,7 @@ namespace BlogSharpCodeAlongWebsite.Controllers
     public class HomeController : Controller
     {
 
-        private readonly static List<BlogPost> blogPostList = new List<BlogPost>()
+         readonly static List<BlogPost> blogPostList = new List<BlogPost>()
             {
                 new BlogPost(){Id = 1, AuthorId=7, Title="awesome blogpost", Content="awesome content awesome content awesome content awesome content awesome content awesome content awesome content awesome content ", CreationTime = DateTime.Now.AddDays(-4) },
                  new BlogPost(){Id = 2, AuthorId=7, Title="awesomer blogpost", Content="awesome content awesome content awesome content awesome content awesome content awesome content awesome content awesome content ", CreationTime = DateTime.Now.AddDays(-4) },
@@ -27,10 +27,13 @@ namespace BlogSharpCodeAlongWebsite.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(BlogPost blogPost)
         {
             try
             {
+                blogPost.Id = blogPostList.Max(post => post.Id) +1;
+                blogPost.CreationTime = DateTime.Now;
+                blogPostList.Add(blogPost);
                 return RedirectToAction(nameof(Index));
             }
             catch
