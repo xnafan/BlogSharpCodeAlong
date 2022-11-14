@@ -6,19 +6,20 @@ namespace BlogSharpCodeAlongWebsite.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index()
-        {
-            var blogPostList = new List<BlogPost>()
+
+        private readonly static List<BlogPost> blogPostList = new List<BlogPost>()
             {
                 new BlogPost(){Id = 1, AuthorId=7, Title="awesome blogpost", Content="awesome content awesome content awesome content awesome content awesome content awesome content awesome content awesome content ", CreationTime = DateTime.Now.AddDays(-4) },
                  new BlogPost(){Id = 2, AuthorId=7, Title="awesomer blogpost", Content="awesome content awesome content awesome content awesome content awesome content awesome content awesome content awesome content ", CreationTime = DateTime.Now.AddDays(-4) },
                   new BlogPost(){Id = 3, AuthorId=7, Title="awesomest blogpost", Content="awesome content awesome content awesome content awesome content awesome content awesome content awesome content awesome content ", CreationTime = DateTime.Now.AddDays(-4) }
             };
+        public ActionResult Index()
+        {
             return View(blogPostList);
         }
         public ActionResult Details(int id)
         {
-            return View();
+            return View(blogPostList.First(blogPost => blogPost.Id == id));
         }
         public ActionResult Create()
         {
