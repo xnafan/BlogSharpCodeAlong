@@ -60,14 +60,15 @@ namespace BlogSharpCodeAlongWebsite.Controllers
         }
         public ActionResult Delete(int id)
         {
-            return View();
+            return View(blogPostList.First(blogPost => blogPost.Id == id));
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult Delete(int id, BlogPost post)
         {
             try
             {
+                blogPostList.RemoveAll(blogPost => blogPost.Id == id);
                 return RedirectToAction(nameof(Index));
             }
             catch
