@@ -43,5 +43,11 @@ namespace BlogSharpCodeAlongWebsite.Controllers
 
 
         }
+
+        public  ActionResult LogOut()
+        {
+            HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            return RedirectToAction("Index", "");
+        }
     }
 }
