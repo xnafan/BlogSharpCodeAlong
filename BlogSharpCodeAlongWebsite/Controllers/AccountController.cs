@@ -19,9 +19,6 @@ namespace BlogSharpCodeAlongWebsite.Controllers
             {
                 SignIn(loginInfo);
             }
-
-            //if (user != null) { await SignIn(user); }
-            //if (string.IsNullOrEmpty(returnUrl)) { return RedirectToAction(); }
             return View();
         }
         private async Task SignIn(LoginModel loginInfo)
