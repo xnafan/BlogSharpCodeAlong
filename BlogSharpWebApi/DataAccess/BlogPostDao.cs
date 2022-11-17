@@ -1,7 +1,10 @@
-﻿using BlogSharpWebApi;
+﻿
+namespace BlogSharpWebApi.DataAccess;
 
 internal class BlogPostDao : IBlogPostDao
 {
+
+
     public bool Delete(BlogPost blogPost)
     {
         throw new NotImplementedException();
@@ -9,7 +12,9 @@ internal class BlogPostDao : IBlogPostDao
 
     public IEnumerable<BlogPost> GetAll()
     {
-        throw new NotImplementedException();
+        return new List<BlogPost>() { 
+        new BlogPost(){Title = "Great post", Id=1 }
+        };
     }
 
     public BlogPost GetById(int id)

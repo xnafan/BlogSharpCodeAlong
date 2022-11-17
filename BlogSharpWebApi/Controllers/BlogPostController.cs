@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using BlogSharpWebApi.DataAccess;
+using Microsoft.AspNetCore.Mvc;
 
 
 namespace BlogSharpWebApi.Controllers
