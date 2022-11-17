@@ -1,4 +1,5 @@
 ﻿using BlogSharpCodeAlongWebsite.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -21,6 +22,8 @@ namespace BlogSharpCodeAlongWebsite.Controllers
         {
             return View(blogPostList.First(blogPost => blogPost.Id == id));
         }
+
+        [Authorize]
         public ActionResult Create()
         {
             return View();
