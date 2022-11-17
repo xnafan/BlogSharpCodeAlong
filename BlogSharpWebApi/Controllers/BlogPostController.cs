@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace BlogSharpWebApi.Controllers
 {
@@ -8,6 +7,15 @@ namespace BlogSharpWebApi.Controllers
     [ApiController]
     public class BlogPostController : ControllerBase
     {
+        IBlogPostDao _blogPostDao;
+
+        public BlogPostController(IBlogPostDao blogPostDao)
+        {
+            _blogPostDao = blogPostDao;
+        }
+
+
+
         // GET: api/<BlogPostController>
         [HttpGet]
         public IEnumerable<string> Get()
